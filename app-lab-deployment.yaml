@@ -19,7 +19,7 @@ metadata:
   labels:
     app: app-lab
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: app-lab
@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: app
-          image:  r7sousa/app-lab:1715f07457afb9a408b571ca3059eb911f7fd7de
+          image:  r7sousa/app-lab:9f5b348c4fe605cd1e0196cad15bf7bd4de558d2
           imagePullPolicy: Always
           ports:
             - name: http
