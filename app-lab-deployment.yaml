@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-lab
+  labels:
+    app: app-lab
+spec:
+  ports:
+    - port: 3000
+      targetPort: 3000
+  selector:
+    app: app-lab
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-lab
+  labels:
+    app: app-lab
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-lab
+  template:
+    metadata:
+      labels:
+        app: app-lab
+    spec:
+      containers:
+        - name: app
+          image:  r7sousa/app-lab:1715f07457afb9a408b571ca3059eb911f7fd7de
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 3000
